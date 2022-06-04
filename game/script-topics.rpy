@@ -7028,7 +7028,7 @@ label talk_learning_languages:
 
         n 1fcsunfesssbr "..."
         n 1fcsanfesssbr "Nnnnnn-!"
-        n 1fcsemlesssbr "Oh,{w=0.5}{nw}" 
+        n 1fcsemlesssbr "Oh,{w=0.75}{nw}" 
         extend 1fbkwrlesssbr " {i}forget it{/i}!{w=0.75}{nw}"
         extend 1kslpul " This is so embarrassing..."
         n 1fslunl "..."
@@ -7041,15 +7041,14 @@ label talk_learning_languages:
         extend 1fsqpol " Having an {i}audience{/i},{w=0.1} and all."
         n 1fnmpu "But seriously,{w=0.1} [player].{w=0.75}{nw}"
         extend 1tnmaj " Have you ever {i}tried{/i} learning another language?"
-        n 1fbkwr "It's super hard!{w=0.5}{nw}"
+        n 1fbkwr "It's super hard!{w=1}{nw}"
         extend 1fslpo " I don't know how people do it!"
 
     n 1tslpu "Like..."
     n 1unmaj "We had language classes in school -{w=0.5}{nw}"
     extend 1nslss " obviously -{w=0.75}{nw}"
     extend 1fnmpu " but there was never enough time to actually {i}practice{/i}!"
-    n 1flrsf "Sure,{w=0.75}{nw}"
-    extend 1fllem " we'd get paired up with partners and practice pronunciations and such."
+    n 1fllem "We'd get paired up with partners and practice pronunciations and such."
     n 1unmem "But when neither of you actually {i}know{/i} the language,{w=0.5}{nw}"
     extend 1fcswr "how're you meant to know when someone's doing something wrong?"
     n 1fllaj "Then with all the other studies flying around,{w=0.5}{nw}"
@@ -7110,7 +7109,7 @@ label talk_learning_languages:
                 extend 1fsqsm " Ehehe."
                 $ persistent._jn_player_is_multilingual = True
 
-        "I know multiple other language.":
+        "I know multiple other languages.":
             if persistent._jn_player_is_multilingual:
                 n 1fllem "Oh,{w=0.5}{nw}" 
                 extend 1fcswr " come {b}on{/b}!{w=0.75}{nw}"
@@ -7145,21 +7144,21 @@ label talk_learning_languages:
                 n 1fslpol "I wasn't born {i}yesterday{/i},{w=0.1} you jerk..."
 
             else:
-                n 1unmem "...Huh?{w=0.2} Really?{w=0.5}{nw}"
+                n 1unmem "...Huh?{w=0.5} Really?{w=0.5}{nw}"
                 extend 1knmpo " Not even a little?"
                 n 1ncspuesi "Man..."
                 n 1nllpu "I gotta admit,{w=0.5}{nw}"
-                extend 1nsqbo " that's kinda disappointing.{w=0.75}{nw}"
-                n 1nllpu "That being said,{w=0.1} though..."
-                n 1fsqbg "...Nothing stopping you from getting started,{w=0.1} right?{w=0.5}{nw}"
+                extend 1nsqbo " that's kinda disappointing."
+                n 1fsqbg "...Nothing stopping you from getting started though,{w=0.1} right?{w=0.5}{nw}"
                 extend 1fsqsm " Ehehe."
                 $ persistent._jn_player_is_multilingual = False
 
     n 1ullaj "Well,{w=0.1} anyway.{w=1}{nw}"
     extend 1tnmss " I think I've gone on long enough at this point,{w=0.1} huh?"
     n 1tlrss "And,{w=0.1} well...{w=0.75}{nw}"
-    extend 1fsqbg " As they say in {i}Deutschland{/i}..."
+    extend 1fsqbg " as they say in {i}Deutschland{/i}..."
+    # Translate
     n 1ncsss "Everything has an end.{w=0.5}{nw}" 
     extend 1uchgnlelg " Only the sausage has two!"
-
+    # Translate end
     return

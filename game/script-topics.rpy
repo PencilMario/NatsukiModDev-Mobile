@@ -6992,7 +6992,7 @@ init 5 python:
     )
 
 label talk_learning_languages:
-    $ already_discussed_learning_languages = get_topic("talk_flying").shown_count > 0
+    $ already_discussed_learning_languages = get_topic("talk_learning_languages").shown_count > 0
     if already_discussed_learning_languages:
         n 1ncsemesi "..."
         n 1nsrem "Man...{w=1}{nw}"

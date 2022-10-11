@@ -926,6 +926,24 @@ init -1 python in jn_outfits:
         """
         return __ALL_WEARABLES.values()
 
+    def save_temporary_outfit(outfit):
+        """
+        Saves the given outfit as the designated temporary outfit.
+        The temporary outfit is not persisted between game exit/reload.
+
+        IN:
+            - outfit - the JNOutfit to use as the base for the temporary outfit
+        """
+        temporary_outfit = get_outfit("jn_temporary_outfit")
+        temporary_outfit.clothes = _PREVIEW_OUTFIT.clothes
+        temporary_outfit.hairstyle = _PREVIEW_OUTFIT.hairstyle
+        temporary_outfit.accessory = _PREVIEW_OUTFIT.accessory
+        temporary_outfit.eyewear = _PREVIEW_OUTFIT.eyewear
+        temporary_outfit.headgear = _PREVIEW_OUTFIT.headgear
+        temporary_outfit.necklace = _PREVIEW_OUTFIT.necklace
+        store.Natsuki.setOutfit(temporary_outfit)
+        return True
+
     def save_custom_outfit(outfit):
         """
         Saves the given outfit as a JSON custom outfit file.
@@ -1547,6 +1565,17 @@ init -1 python in jn_outfits:
     ))
 
     # Internal outfits; used for events, etc. These shouldn't be unlocked!
+    
+    # Temporary outfit; used when we don't want to visibly save an outfit
+    __register_outfit(JNOutfit(
+        reference_name="jn_temporary_outfit",
+        display_name="Temporary outfit",
+        unlocked=False,
+        is_jn_outfit=True,
+        clothes=get_wearable("jn_clothes_school_uniform"),
+        hairstyle=get_wearable("jn_hair_twintails"),
+        accessory=get_wearable("jn_accessory_hairband_red")
+    ))
 
     # Outfit used for ahoge unlock event
     __register_outfit(JNOutfit(
@@ -2003,6 +2032,17 @@ label outfits_create_save:
                 n 1kllss "Sorry..."
 
                 jump outfits_create_menu
+
+        "Yes, but don't worry about saving this outfit.":
+            n 1tnmpueqm "Eh?{w=0.75}{nw}"
+            extend 1tnmaj " You {i}don't{/i} want me to remember this one?"
+            n 1ullaj "Well...{w=0.75}{nw}"
+            extend 1tnmss " if you insist."
+            n 1nchgneme "Less note taking for me!"
+
+            $ jn_outfits._changes_made = False
+            $ jn_outfits.save_temporary_outfit(jn_outfits._PREVIEW_OUTFIT)
+            jump ch30_loop
             
         "No, I'm not quite finished.":
             n 1nslpo "I {i}knew{/i} I should have brought a book...{w=2}{nw}"
@@ -2426,7 +2466,7 @@ screen create_outfit():
         xpos 600
         ypos 450
 
-        textbutton _("Save"):
+        textbutton _("Finished"):
             style "hkbd_option"
             action Jump("outfits_create_save")
 

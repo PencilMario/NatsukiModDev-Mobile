@@ -8,6 +8,7 @@ init python in jn_custom_music:
     import store.jn_utils as jn_utils
 
     # Tracks must be placed here for Natsuki to find them
+    # TODO: 手机版测试/兼容
     CUSTOM_MUSIC_DIRECTORY = os.path.join(renpy.config.basedir, "custom_music/").replace("\\", "/")
 
     # The file extensions we (Ren'Py) support
@@ -108,7 +109,7 @@ label music_menu:
         n 1tsqaj "Uh...{w=0.5}{nw}"
         extend 1tslaj " huh."
         n 1tsgsg "And {i}how{/i} exactly do you plan to hear any music with the volume at zero?"
-        n 1fchbg "Jeez, [player].{w=0.5}{nw}" 
+        n 1fchbg "Jeez, [player].{w=0.5}{nw}"
         extend 1uchgn " How do you even get dressed in the morning with memory like that?!"
         n 1ullss "Well, whatever.{w=0.5}{nw}"
         extend 1unmaj " So..."
@@ -147,7 +148,7 @@ label music_menu:
 
         stop music fadeout 3
         n 1uchsm "There you go, [player]!"
-        
+
         if persistent.jn_random_music_enabled:
             # Stop playing random music, if enabled
             $ persistent.jn_random_music_enabled = False

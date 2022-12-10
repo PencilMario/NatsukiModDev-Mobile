@@ -9,7 +9,7 @@ init python in jn_activity:
     import store
     import store.jn_globals as jn_globals
     import store.jn_utils as jn_utils
-    
+
     ACTIVITY_SYSTEM_ENABLED = True
     LAST_ACTIVITY = None
 
@@ -34,6 +34,9 @@ init python in jn_activity:
             import Xlib.display
 
     elif renpy.macintosh:
+        ACTIVITY_SYSTEM_ENABLED = False
+
+    elif renpy.android:
         ACTIVITY_SYSTEM_ENABLED = False
 
     class JNWindowFoundException(Exception):
@@ -110,7 +113,7 @@ init python in jn_activity:
                 return renpy.substitute(random.choice(self.notify_text))
 
             return None
-    
+
     class JNActivityManager:
         """
         Management class for handling activities.
